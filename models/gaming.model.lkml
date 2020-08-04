@@ -1,8 +1,8 @@
-connection: "gaming_demo"
+connection: "chris_demo_bq_bingoblast_connection"
 
 include: "/views/*.view.lkml"
 include: "/derived_tables/*.view.lkml"
-#include: "*.dashboard.lookml"   # include a LookML dashboard called my_dashboard
+include: "/lookml_dashboards/*.dashboard.lookml"   # include a LookML dashboard called my_dashboard
 
 # Model Configuration
 datagroup: events_raw { sql_trigger:  SELECT max(event) FROM `se-pbl.gaming_demo_dev.raw_events` WHERE DATE(event) = CURRENT_DATE  ;; }
@@ -86,4 +86,3 @@ explore: level_balancing {
     sql_on: ${level_balancing.user_id} = ${user_facts.user_id} ;;
   }
 }
-
